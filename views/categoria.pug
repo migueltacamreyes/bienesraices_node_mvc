@@ -1,0 +1,25 @@
+extends layout/app
+
+block contenido 
+
+    section(class="py-5")
+        h2(class="text-center text-4xl font-extrabold pt-10")= pagina
+
+        if propiedades.length
+            div(class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-14")
+                each propiedad in propiedades 
+                    div(class="bg-white shadow rounded-lg")
+                        img(class="object-cover h-72 w-full" src=`/uploads/${propiedad.imagen}`, alt="Imagen propiedad")
+                        div(class="p-5 space-y-3")
+                            h3(class="text-2xl font-bold")= propiedad.titulo
+                            p(class="text-sm text-gray-600") Habitaciones:  
+                                span(class="text-gray-800 font-bold")= propiedad.habitaciones
+                            p(class="text-sm text-gray-600") WC:  
+                                span(class="text-gray-800 font-bold")= propiedad.wc
+                            p(class="text-sm text-gray-600") Precio:  
+                                span(class="text-gray-800 font-bold")= propiedad.precio.nombre
+                            a(href=`/propiedad/${propiedad.id}` class="bg-indigo-600 block p-2 text-center font-bold uppercas text-white rounded") Ver Propiedad
+
+        else 
+            p(class="text-center text-gray-800 text-sm py-10") No Hay Resultados
+
